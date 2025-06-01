@@ -8,7 +8,7 @@ let handler = async (m, { conn: star, args, usedPrefix, command }) => {
   if (!args || !args[0]) {
     return star.reply(
       m.chat,
-      ` *¡Ingresa el texto o enlace del vídeo de YouTube!*\n\n» *Ejemplo:*\n> *${usedPrefix + command}* Canción de ejemplo`,
+      ` ✎ *¡Ingresa el texto o enlace del vídeo de YouTube!*\n\n» *Ejemplo:*\n> *${usedPrefix + command}* Canción de ejemplo`,
       m
     );
   }
