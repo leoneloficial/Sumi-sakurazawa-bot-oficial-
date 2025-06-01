@@ -8,7 +8,7 @@ let handler = async (m, { conn, args }) => {
     let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
     
     let txt = `
-Hola! Soy  *${botname}*  ٩(˘◡˘)۶
+> Hola! Soy  *${botname}* »  ⊹˚୨ •(=^●ω●^=)•
 Aquí tienes la lista de comandos
 ╭┈ ↷
 │ᰔᩚ Cliente » @${userId.split('@')[0]}
@@ -19,11 +19,14 @@ Aquí tienes la lista de comandos
 │✧ Comandos » ${totalCommands}
 │🜸 Baileys » Multi Device
 ╰─────────────────
-Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
+✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
 
-• :･ﾟ⊹˚• \`『 Info-Bot 』\` •˚⊹:･ﾟ•
+ 
+»  ⊹˚୨ •(=^●ω●^=)• *info-bot*  ❀   
 
-❍ Comandos para ver estado e información de la Bot.
+
+> ᥫ᭡ Comandos para ver estado e información de la Bot.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#help • #menu*
 > ✦ Ver la lista de comandos de la Bot.
 ᰔᩚ *#uptime • #runtime*
@@ -31,7 +34,8 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#sc • #script*
 > ✦ Link del repositorio oficial de la Bot
 ᰔᩚ *#staff • #colaboradores*
-> ✦ Ver la lista de desarrolladores de la Bot.
+> ✦ Ver la lista de desarrolladores de
+la Bot.
 ᰔᩚ *#serbot • #serbot code*
 > ✦ Crea una sesión de Sub-Bot.
 ᰔᩚ *#bots • #sockets*
@@ -63,9 +67,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#editautoresponder*
 > ✦ Configurar un Prompt personalizado de la Bot.
 
-• :･ﾟ⊹˚• \`『 Buscadores 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *buscadores*   ❀
 
-❍ Comandos para realizar búsquedas en distintas plataformas.
+> ᥫ᭡ Comandos para realizar búsquedas en distintas plataformas.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#tiktoksearch • #tiktoks*
 > ✦ Buscador de videos de tiktok.
 ᰔᩚ *#tweetposts*
@@ -82,6 +87,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Buscador de imagenes de Pinterest.
 ᰔᩚ *#imagen • #image*
 > ✦ buscador de imagenes de Google.
+ᰔᩚ *#animesearch • #animess*
+> ✦ Buscador de animes de tioanime.
+ᰔᩚ *#animei • #animeinfo*
+> ✦ Buscador de capítulos de #animesearch.
 ᰔᩚ *#infoanime*
 > ✦ Buscador de información de anime/manga.
 ᰔᩚ *#hentaisearch • #searchhentai*
@@ -95,9 +104,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#npmjs*
 > ✦ Buscandor de npmjs.
 
-• :･ﾟ⊹˚• \`『 Descargas 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *descargas*   ❀
 
-❍ Comandos de descargas para varios archivos.
+> ᥫ᭡ Comandos de descargas para varios archivos.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#tiktok • #tt*
 > ✦ Descarga videos de TikTok.
 ᰔᩚ *#mediafire • #mf*
@@ -106,7 +116,7 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Descargar vídeos de Pinterest. 
 ᰔᩚ *#mega • #mg* + [enlacé]
 > ✦ Descargar un archivo de MEGA.
-ᰔᩚ *#play • #play2*
+ᰔᩚ *#play • #play2* • *#playaudio • #playvideo*
 > ✦ Descarga música/video de YouTube.
 ᰔᩚ *#ytmp3 • #ytmp4*
 > ✦ Descarga música/video de YouTube mediante url.
@@ -120,6 +130,8 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Buscar videos de tiktok 
 ᰔᩚ *#terabox • #tb* + [enlace]
 > ✦ Descargar archivos por Terabox.
+ᰔᩚ *#gdrive • #drive* + [enlace]
+> ✦ Descargar archivos por Google Drive.
 ᰔᩚ *#ttimg • #ttmp3* + <url>
 > ✦ Descarga fotos/audios de tiktok. 
 ᰔᩚ *#gitclone* + <url> 
@@ -134,10 +146,13 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Descarga un video aleatorio de tiktok.
 ᰔᩚ *#npmdl • #npmdownloader*
 > ✦ Descarga paquetes de NPMJs.
+ᰔᩚ *#animelinks • #animedl*
+> ✦ Descarga Links disponibles de descargas.
 
-• :･ﾟ⊹˚• \`『 Economia 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *economia*   ❀
 
-❍ Comandos de economía y rpg para ganar dinero y otros recursos.
+> ᥫ᭡ Comandos de economía y rpg para ganar dinero y otros recursos.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#w • #work • #trabajar*
 > ✦ Trabaja para ganar ${moneda}.
 ᰔᩚ *#slut • #protituirse*
@@ -195,9 +210,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#christmas • #navidad*
 > ✦ Reclama tu regalo navideño (Solo en Navidad).
 
-• :･ﾟ⊹˚• \`『 Gacha 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *gacha*   ❀
 
-❍ Comandos de gacha para reclamar y colecciónar personajes.
+> ᥫ᭡ Comandos de gacha para reclamar y colecciónar personajes.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#rollwaifu • #rw • #roll*
 > ✦ Waifu o husbando aleatorio.
 ᰔᩚ  *#claim • #c • #reclamar*
@@ -215,9 +231,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#waifusboard • #waifustop • #topwaifus*
 > ✦ Ver el top de personajes con mayor valor.
 
-• :･ﾟ⊹˚• \`『 Stickers 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *sticker*   ❀
 
-❍ Comandos para creaciones de stickers etc.
+> ᥫ᭡ Comandos para creaciones de stickers etc.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#sticker • #s*
 > ✦ Crea stickers de (imagen/video)
 ᰔᩚ *#setmeta*
@@ -237,9 +254,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#wm*
 > ✦ Cambia el nombre de los stickers.
 
-•:･ﾟ⊹˚• \`『 Herramientas 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *herramientas*   ❀
 
-❍ Comandos de herramientas con muchas funciones.
+> ᥫ᭡ Comandos de herramientas con muchas funciones.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#calcular • #calcular • #cal*
 > ✦ Calcular todo tipo de ecuaciones.
 ᰔᩚ *#tiempo • #clima*
@@ -256,6 +274,8 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Ver imágenes de una sola vista.
 ᰔᩚ *#whatmusic • #shazam*
 > ✦ Descubre el nombre de canciones o vídeos.
+ᰔᩚ *#spamwa • #spam*
+> ✦ Envia spam aun usuario.
 ᰔᩚ *#ss • #ssweb*
 > ✦ Ver el estado de una página web.
 ᰔᩚ *#length • #tamaño*
@@ -267,9 +287,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#translate • #traducir • #trad*
 > ✦ Traduce palabras en otros idiomas.
 
-• :･ﾟ⊹˚• \`『 Perfil 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *perfil*   ❀
 
-❍ Comandos de perfil para ver, configurar y comprobar estados de tu perfil.
+> ᥫ᭡ Comandos de perfil para ver, configurar y comprobar estados de tu perfil.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#reg • #verificar • #register*
 > ✦ Registra tu nombre y edad en el bot.
 ᰔᩚ *#unreg*
@@ -301,9 +322,12 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#confesiones • #confesar*
 > ✦ Confiesa tus sentimientos a alguien de manera anonima.
 
-• :･ﾟ⊹˚• \`『 Grupos 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *grupos*   ❀
 
-❍ Comandos de grupos para una mejor gestión de ellos.
+> ᥫ᭡ Comandos de grupos para una mejor gestión de ellos.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
+ᰔᩚ *#config • #on*
+> ✦ Ver opciones de configuración de grupos.
 ᰔᩚ *#hidetag*
 > ✦ Envia un mensaje mencionando a todos los usuarios
 ᰔᩚ *#gp • #infogrupo*
@@ -316,7 +340,7 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Establecer un mensaje de despedida personalizado.
 ᰔᩚ *#link*
 > ✦ El bot envia el link del grupo.
-ᰔᩚ *admins • admin*
+ᰔᩚ *#admins • #admin*
 > ✦ Mencionar a los admins para solicitar ayuda.
 ᰔᩚ *#restablecer • #revoke*
 > ✦ Restablecer el enlace del grupo.
@@ -367,9 +391,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#listnum • #kicknum*
 > ✦ Elimine a usuario por el prefijo de país.
 
-• :･ﾟ⊹˚• \`『 Anime 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *anime*   ❀
 
-❍ Comandos de reacciones de anime.
+> ᥫ᭡ Comandos de reacciones de anime.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#angry • #enojado* + <mencion>
 > ✦ Estar enojado
 ᰔᩚ *#bite* + <mencion>
@@ -439,9 +464,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#think* + <mencion>
 > ✦ Pensar en algo
 
-• :･ﾟ⊹˚• \`『 NSFW 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *NSFW*   ❀
 
-❍ Comandos NSFW (Contenido para adultos)
+> ᥫ᭡ Comandos NSFW (Contenido para adultos)
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#anal* + <mencion>
 > ✦ Hacer un anal
 ᰔᩚ *#waifu*
@@ -485,9 +511,10 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#yuri • #tijeras* + <mencion>
 > ✦ Hacer tijeras.
 
-• :･ﾟ⊹˚• \`『 Juegos 』\` •˚⊹:･ﾟ•
+»  ⊹˚୨ •(=^●ω●^=)• *juegos*   ❀
 
-❍ Comandos de juegos para jugar con tus amigos.
+> ᥫ᭡ Comandos de juegos para jugar con rus amigos.
+─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─
 ᰔᩚ *#amistad • #amigorandom* 
 > ✦ hacer amigos con un juego. 
 ᰔᩚ *#chaqueta • #jalamela*
@@ -542,6 +569,8 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 > ✦ Forma un trio.
 ᰔᩚ *#ahorcado*
 > ✦ Diviertete con la bot jugando el juego ahorcado.
+ᰔᩚ *#genio*
+> ✦ Comienza una pregunta con el genio.
 ᰔᩚ *#mates • #matematicas*
 > ✦ Responde las preguntas de matemáticas para ganar recompensas.
 ᰔᩚ *#ppt*
@@ -551,7 +580,6 @@ Crea un *Sub-Bot* con tu número utilizando *#qr* o *#code*
 ᰔᩚ *#pvp • #suit* + <mencion>
 > ✦ Juega un pvp contra otro usuario.
 ᰔᩚ *#ttt*
-> ✦ Crea una sala de juego. 
   `.trim()
 
   await conn.sendMessage(m.chat, { 
