@@ -80,14 +80,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Enlace » ${url}\n`; // Changed "Link" to "Enlace" to be more generic.
+    const infoMessage = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n`;
        const thumb = (await conn.getFile(thumbnail))?.data;
 m.react('')
     const JT = {
       contextInfo: {
         externalAdReply: {
-          title: packname,
-          body: dev,
           mediaType: 1,
           previewType: 0,
           mediaUrl: url,
@@ -147,7 +145,7 @@ m.react('')
   }
 };
 
-handler.command = handler.help = ['playvideo', 'mp4', 'ytv'];
+handler.command = handler.help = ['playvideo', 'mp4', 'ytv']; 
 handler.tags = ['downloader'];
 
 export default handler;
