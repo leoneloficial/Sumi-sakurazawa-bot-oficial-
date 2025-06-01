@@ -15,6 +15,7 @@ let handler = async (m, { conn, args }) => {
 │ⴵ Activada » ${uptime}
 │• Usuarios » ${totalreg}
 │• Comandos » ${totalCommands}
+|• país » ${global.userNationality}
 │• Baileys » Multi Device
 ╰─────────────────
 ✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
