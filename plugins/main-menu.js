@@ -30,7 +30,7 @@ const mundo = banderaEmoji(countryCode) || '🌐';
 │ⴵ Activada » ${uptime}
 │• Usuarios » ${totalreg}
 │• Comandos » ${totalCommands}
-|• país » ${mundo}
+│• país » ${mundo}
 │• Baileys » Multi Device
 ╰─────────────────
 ✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
