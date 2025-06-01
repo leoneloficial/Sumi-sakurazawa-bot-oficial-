@@ -45,7 +45,7 @@ let handler = async (m, { conn, text, args }) => {
   }
 }
 
-handler.command = ['playvideo'];
+handler.command = /^(play3)$/i
 export default handler
 
 async function search(query, options = {}) {
