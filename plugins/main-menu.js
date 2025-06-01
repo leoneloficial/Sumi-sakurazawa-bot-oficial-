@@ -10,13 +10,12 @@ let handler = async (m, { conn, args }) => {
     let txt = `
 > Hola! @${userId.split('@')[0]} Soy  *${botname}* »  ⊹˚୨ •(=^●ω●^=)•
 ╭┈ ↷
-│❀ Modo » Publico
+│➮ Modo » Publico
 │✦ Bot » ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
 │ⴵ Activada » ${uptime}
-│✰ Usuarios » ${totalreg}
-│✧ Comandos » ${totalCommands}
-│• *Pais ›* ${country}
-│🜸 Baileys » Multi Device
+│• Usuarios » ${totalreg}
+│• Comandos » ${totalCommands}
+│• Baileys » Multi Device
 ╰─────────────────
 ✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
 
