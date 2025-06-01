@@ -12,8 +12,9 @@ function banderaEmoji(countryCode) {
 const number = m.sender.replace('@s.whatsapp.net', '');
 const phoneInfo = PhoneNumber('+' + number);
 const countryCode = phoneInfo.getRegionCode('international');
-const mundo = banderaEmoji(countryCode) || '🌐';
-
+const bandera = banderaEmoji(countryCode) || '🌐';
+const pais = regionNames.of(countryCode) || 'Desconocido';
+const mundo = `${bandera} ${pais}`;
     let userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     let user = global.db.data.users[userId]
     let name = conn.getName(userId)
@@ -30,7 +31,7 @@ const mundo = banderaEmoji(countryCode) || '🌐';
 │ⴵ Activada » ${uptime}
 │• Usuarios » ${totalreg}
 │• Comandos » ${totalCommands}
-│• país » ${mundo}
+|• país » ${mundo}
 │• Baileys » Multi Device
 ╰─────────────────
 ✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
