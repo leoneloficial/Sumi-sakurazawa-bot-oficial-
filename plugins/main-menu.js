@@ -1,4 +1,19 @@
+import PhoneNumber from 'awesome-phonenumber';
 let handler = async (m, { conn, args }) => {
+const regionNames = new Intl.DisplayNames(['es'], { type: 'region' });
+
+function banderaEmoji(countryCode) {
+  if (!countryCode || countryCode.length !== 2) return '';
+  const codePoints = [...countryCode.toUpperCase()]
+    .map(char => 0x1F1E6 + char.charCodeAt(0) - 65);
+  return String.fromCodePoint(...codePoints);
+}
+
+const number = m.sender.replace('@s.whatsapp.net', '');
+const phoneInfo = PhoneNumber('+' + number);
+const countryCode = phoneInfo.getRegionCode('international');
+const mundo = banderaEmoji(countryCode) || '🌐';
+
     let userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     let user = global.db.data.users[userId]
     let name = conn.getName(userId)
@@ -6,7 +21,7 @@ let handler = async (m, { conn, args }) => {
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.db.data.users).length
     let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
-    
+
     let txt = `
 > Hola! @${userId.split('@')[0]} Soy  *${botname}* »  ⊹˚୨ •(=^●ω●^=)•
 ╭┈ ↷
@@ -15,7 +30,7 @@ let handler = async (m, { conn, args }) => {
 │ⴵ Activada » ${uptime}
 │• Usuarios » ${totalreg}
 │• Comandos » ${totalCommands}
-|• país » ${global.userNationality}
+|• país » ${mundo}
 │• Baileys » Multi Device
 ╰─────────────────
 ✐; *❀*→ ᴘᴀʀᴀ ᴄʀᴇᴀʀ ᴜɴ sᴜʙ-ʙᴏᴛ ᴄᴏɴ ᴛᴜ ɴᴜᴍᴇʀᴏ ᴜᴛɪʟɪᴢᴀ *#qr* o *#code*
