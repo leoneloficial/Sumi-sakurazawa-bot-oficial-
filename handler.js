@@ -185,8 +185,6 @@ if (!('antiLag' in chat))
 chat.antiLag = false
 if (!isNumber(chat.expired))
 chat.expired = 0
-if (!('per' in chat))
-chat.per = []
 } else
 global.db.data.chats[m.chat] = {
 isBanned: false,
