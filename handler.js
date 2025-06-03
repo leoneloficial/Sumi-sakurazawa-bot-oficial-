@@ -182,7 +182,7 @@ chat.antifake = false
 if (!('delete' in chat))
 chat.delete = false
 if (!('antiLag' in chat))
-chat.antiLag = true
+chat.antiLag = false
 if (!isNumber(chat.expired))
 chat.expired = 0
 } else
