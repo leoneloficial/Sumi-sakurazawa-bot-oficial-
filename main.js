@@ -1,4 +1,4 @@
-import "./config.js"
+import "./settings.js"
 import { createRequire } from "module"
 import path, { join } from "path"
 import { fileURLToPath, pathToFileURL } from "url"
