@@ -65,7 +65,7 @@ let handler = async (m, { conn, text }) => {
 
 handler.help = ['imagen *<texto>*']
 handler.tags = ['internet', 'dl']
-handler.command = 
+handler.command = ['imagen', 'image', 'img'];
 
 export default handler;
 
