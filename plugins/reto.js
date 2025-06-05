@@ -3,7 +3,7 @@ conn.reply(m.chat,`*┌────「 FUN - RETO 」─*\n*“${pickRandom(glob
 }
 handler.help = ['reto']
 handler.tags = ['fun']
-handler.command = /^reto/i
+handler.command = ['reto,retar'];
 export default handler
 
 function pickRandom(list) {
