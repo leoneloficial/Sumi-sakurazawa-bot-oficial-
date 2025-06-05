@@ -20,7 +20,7 @@ let handler = async (m, { conn, text }) => {
 
             push.push({
                 body: proto.Message.InteractiveMessage.Body.fromObject({
-                    text: `◦ *Título:* ${result.title} \n◦ *Descripción:* ${result.snippet}`
+                    text: `*「✦」Título:* ${result.title} \n✐ *Descripción:* ${result.snippet}`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '' }),
                 header: proto.Message.InteractiveMessage.Header.fromObject({
@@ -47,7 +47,7 @@ let handler = async (m, { conn, text }) => {
                         deviceListMetadataVersion: 2
                     },
                     interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-                        body: proto.Message.InteractiveMessage.Body.create({ text: '*`\Resultados de:\`* ' + `${text}` }),
+                        body: proto.Message.InteractiveMessage.Body.create({ text: '*✎`\Resultados de:\`* ' + `${text}` }),
                         footer: proto.Message.InteractiveMessage.Footer.create({ text: '_\`Imagenes encontradas\`_' }),
                         header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
                         carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...push] })
