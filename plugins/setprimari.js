@@ -3,7 +3,7 @@ import ws from "ws";
 let handler = async (m, { conn, usedPrefix, args }) => {
   try {
     if (!args[0] && !m.quoted) {
-      return m.reply(`⚠️ Menciona el número de un bot o responde al mensaje de un bot.\n> Ejemplo: *${usedPrefix}setprimary @0*`);
+      return m.reply(`✿ Menciona el número de un bot o responde al mensaje de un bot.\n> ✎ Ejemplo: *${usedPrefix}setprimary @0*`);
     }
 
     // Validación de global.conns para evitar errores de undefined
@@ -44,7 +44,7 @@ let handler = async (m, { conn, usedPrefix, args }) => {
 
     chat.primaryBot = botJid;
     conn.sendMessage(m.chat, {
-      text: `✅ El bot @${botJid.split("@")[0]} ha sido establecido como primario en este grupo. Los demás bots no responderán aquí.`,
+      text: `✎ El bot @${botJid.split("@")[0]} ha sido establecido como primario en este grupo. Los demás bots no responderán aquí.`,
       mentions: [botJid]
     }, { quoted: m });
 
