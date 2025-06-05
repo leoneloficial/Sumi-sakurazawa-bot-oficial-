@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('Ingresa el texto de lo que quieres buscar en imágenes 🔍');
+    if (!text) return m.reply('✎ Ingresa el texto de lo que quieres buscar en imágenes ');
     await m.react('🕓');
 
     try {
@@ -32,7 +32,7 @@ let handler = async (m, { conn, text }) => {
                     buttons: [
                         {
                             "name": "cta_url",
-                            "buttonParamsJson": `{"display_text":"🌐 Ver Imagen","url":"${result.image.contextLink}"}`
+                            "buttonParamsJson": `{"display_text":"✦ Ver Imagen","url":"${result.image.contextLink}"}`
                         }
                     ]
                 })
