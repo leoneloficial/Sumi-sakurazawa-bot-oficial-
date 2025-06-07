@@ -1,8 +1,7 @@
-
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-    await m.react('🍁');
+    await m.react('👑');
 
 
     if (!['owner', 'creator', 'creador', 'dueño'].includes(command.toLowerCase())) {
@@ -30,7 +29,7 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
         contextInfo: {
             externalAdReply: {
                 showAdAttribution: true,
-                title: '✎ һ᥆ᥣᥲ ᥴ᥆ᥒ𝗍ᥲᥴ𝗍᥆ ძᥱ mі ᥴrᥱᥲძ᥆r彡,
+                title: 'һ᥆ᥣᥲ ᥴ᥆ᥒ𝗍ᥲᥴ𝗍᥆ ძᥱ mі ᥴrᥱᥲძ᥆r👑',
                 body: dev,
                 thumbnailUrl: imageUrl,
                 sourceUrl: 'https://github.com/WillZek',
