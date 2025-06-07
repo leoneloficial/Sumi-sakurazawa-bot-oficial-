@@ -82,12 +82,16 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const vistas = formatViews(views);
     const infoMessage = `「✦」Descargando *<${title}>*\n\n> ✦ Canal » *${videoInfo.author.name || 'Desconocido'}*\n> ✰ Vistas » *${views}*\n> ⴵ Duración » *${timestamp}*\n> ✐ Publicación » *${ago}*\n> 🜸 Link » ${url}\n`;
        const thumb = (await conn.getFile(thumbnail))?.data;
-m.react('')
+m.react('🌸')
     const JT = {
       contextInfo: {
         externalAdReply: {
+          title: packname,
+          body: dev,
           mediaType: 1,
           previewType: 0,
+          mediaUrl: url,
+          sourceUrl: url,
           thumbnail: thumb,
           renderLargerThumbnail: true,
         },
