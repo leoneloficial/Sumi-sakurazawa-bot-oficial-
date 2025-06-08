@@ -1,113 +1,114 @@
-import fetch from 'node-fetch';
-import yts from 'yt-search';
-import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
+import fetch from "node-fetch";
+import yts from "yt-search";
 
-let limit = 100; 
+const encodedApiUrl = "aHR0cHM6Ly9hcGkuYWdhdHoueHl6L2FwaS95dG1wNA==";
+const officialBrand = "©Prohibido La Copia, Código Oficial De MediaHub™"; 
 
-let handler = async (m, { conn: star, args, usedPrefix, command }) => {
-  if (!args || !args[0]) {
-    return star.reply(
-      m.chat,
-      `✦ *¡Ingresa el texto o enlace del vídeo de YouTube!*\n\n» *Ejemplo:*\n> *${usedPrefix + command}* Canción de ejemplo`,
-      m
-    );
-  }
-
-  await m.react('🕓'); 
-
-  try {
-    let query = args.join(' ');
-    let isUrl = query.match(/youtu/gi);
-
-    let video;
-    if (isUrl) {
-
-      let ytres = await yts({ videoId: query.split('v=')[1] });
-      video = ytres.videos[0];
-    } else {
-      // Si es un texto
-      let ytres = await yts(query);
-      video = ytres.videos[0];
-      if (!video) {
-        return star.reply(m.chat, '✦ *Video no encontrado.*', m).then(() => m.react('✖️'));
-      }
+const verifyBrand = () => {
+    if (officialBrand !== officialBrand) {
+        throw new Error("❌ *ERROR CRÍTICO:* La marca oficial de MediaHub ha sido alterada. Restáurela para continuar usando el código.");
     }
-
-    let { title, thumbnail, timestamp, views, ago, url } = video;
-
-    let yt = await youtubedl(url).catch(async () => await youtubedlv2(url));
-    let videoInfo = yt.video['360p']; 
-
-    if (!videoInfo) {
-      return star.reply(m.chat, '✦ *No se encontró una calidad compatible para el video.*', m).then(() => m.react('✖️'));
-    }
-
-    let { fileSizeH: sizeHumanReadable, fileSize } = videoInfo;
-
-
-    let sizeMB = fileSize / (1024 * 1024); 
-
-
-    if (sizeMB >= 700) {
-      return star.reply(m.chat, '✦ *El archivo es demasiado pesado (más de 700 MB). Se canceló la descarga.*', m).then(() => m.react('✖️'));
-    }
-
-
-    let durationInMinutes = parseFloat(timestamp.split(':')[0]) * 60 + parseFloat(timestamp.split(':')[1]);
-
-
-    let txt = `*「✦」 » ${title}*\n`;
-
-txt +=  `
-> ✦ Canal » *${video.author.name}*`; 
- txt += `
-> ⴵ *Duración* » ${timestamp}\n`;
-    txt += `> ✰ *Vistas* » ${views}\n`;
-    txt += `> ✐ *Publicación* » ${ago}\n`;
-    txt += `> ❒ *Tamaño:* » ${sizeHumanReadable}\n`;
-    txt += `> 🜸 *Link* » ${url}`;
-    //txt += `> *- ↻ El video se está enviando, espera un momento...*`;
-
-
-    await star.sendFile(m.chat, thumbnail, 'thumbnail.jpg', txt, m);
-
-
-    let api = await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${url}`);
-    let json = await api.json();
-    let { data } = json;
-
-    if (!data || !data.dl) {
-      return star.reply(m.chat, '✦ *Error al obtener el enlace de descarga desde la API.*', m).then(() => m.react('✖️'));
-    }
-
-    let { dl: downloadUrl } = data;
-
-    // Enviar el video según el tamaño o la duración
-    if (sizeMB > limit || durationInMinutes > 30) {
-      // Enviar como documento si el tamaño supera los 100 MB o si dura más de 30 minutos
-      await star.sendMessage(
-        m.chat,
-        { document: { url: downloadUrl }, mimetype: 'video/mp4', fileName: `${title}.mp4` },
-        { quoted: m }
-      );
-      await m.react('📄'); // Reacción de documento
-    } else {
-      // Enviar como video normal si es menor o igual al límite y dura menos de 30 minutos
-      await star.sendMessage(
-        m.chat,
-        { video: { url: downloadUrl }, caption: `${title}`, mimetype: 'video/mp4', fileName: `${title}.mp4` },
-        { quoted: m }
-      );
-      await m.react('✅'); // Reacción de éxito
-    }
-  } catch (error) {
-    console.error(error);
-    await m.react('✖️'); // Error durante el proceso
-    star.reply(m.chat, '✦ *Ocurrió un error al procesar tu solicitud. Intenta nuevamente más tarde.*', m);
-  }
 };
 
+const fetchWithRetries = async (url, maxRetries = 2, timeout = 60000) => {
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+            const response = await fetch(url, { signal: controller.signal });
+            const data = await response.json();
+            clearTimeout(timeoutId);
 
-handler.command = ['play2', 'playvidoc']; // Comandos disponibles
+            if (data?.status === 200 && data.data?.downloadUrl) {
+                return data.data;
+            }
+        } catch (error) {
+            if (error.name === "AbortError") continue;
+        }
+    }
+    throw new Error("No se pudo obtener una respuesta válida después de varios intentos.");
+};
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    try {
+        verifyBrand();
+        await m.react('🕓');
+
+        if (!text) {
+            const example = command === "ytmp4" ? `${usedPrefix}${command} https://youtu.be/URL_DEL_VIDEO` : `${usedPrefix}${command} Never Gonna Give You Up`;
+            return conn.sendMessage(m.chat, { text: `⚠️ *¡Atención!*\n\n💡 *Por favor ingresa ${command === "play2" ? "un término de búsqueda" : "una URL válida de YouTube"}.*\n\n📌 *Ejemplo:* ${example}` });
+        }
+
+        if (command === "ytmp4" || command === "ytv") {
+            if (!/^https?:\/\/(www\.)?youtube\.com\/watch\?v=|youtu\.be\//.test(text)) {
+                return conn.sendMessage(m.chat, { text: `❌ *La URL ingresada no es válida.*\n\n📌 *Ejemplo válido:* ${usedPrefix}${command} https://youtu.be/URL_DEL_VIDEO` });
+            }
+
+            const apiUrl = `${Buffer.from(encodedApiUrl, "base64").toString("utf-8")}?url=${encodeURIComponent(text)}`;
+            const apiData = await fetchWithRetries(apiUrl, 2, 60000);
+            const { title: apiTitle, downloadUrl, image: apiImage } = apiData;
+
+            const fileResponse = await fetch(downloadUrl, { method: "HEAD" });
+            const fileSize = parseInt(fileResponse.headers.get("content-length") || 0);
+            const fileSizeInMB = fileSize / (1024 * 1024);
+
+            await conn.sendMessage(m.chat, { image: { url: apiImage }, caption: `🎥 *Video Encontrado:* ${apiTitle}` });
+            await m.react('✅');
+
+            if (fileSizeInMB > 70) {
+                await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: "video/mp4", fileName: apiTitle || "video.mp4", caption: `📂 *Descarga en formato documento:*\n🎵 *Título:* ${apiTitle}\n📦 *Tamaño:* ${fileSizeInMB.toFixed(2)} MB` }, { quoted: m });
+            } else {
+                await conn.sendMessage(m.chat, { video: { url: downloadUrl }, mimetype: "video/mp4", fileName: apiTitle || "video.mp4", caption: `🎥 *Video Descargado:*\n🎵 *Título:* ${apiTitle}\n📦 *Tamaño:* ${fileSizeInMB.toFixed(2)} MB` }, { quoted: m });
+            }
+            return;
+        }
+
+        const searchResults = await yts(text);
+        const video = searchResults.videos[0];
+
+        if (!video) {
+            await m.react('❌');
+            return conn.sendMessage(m.chat, { text: `❌ *No se encontraron resultados para:* ${text}` });
+        }
+
+        const { title, url: videoUrl, timestamp, views, author, image, ago } = video;
+        const apiUrl = `${Buffer.from(encodedApiUrl, "base64").toString("utf-8")}?url=${encodeURIComponent(videoUrl)}`;
+        const apiData = await fetchWithRetries(apiUrl, 2, 60000);
+        const { title: apiTitle, downloadUrl, image: apiImage } = apiData;
+
+        const fileResponse = await fetch(downloadUrl, { method: "HEAD" });
+        const fileSize = parseInt(fileResponse.headers.get("content-length") || 0);
+        const fileSizeInMB = fileSize / (1024 * 1024);
+
+        const videoInfo = `
+    🌸𝙎𝙐𝙈𝙄 𝙎𝘼𝙆𝙐𝙍𝘼𝙕𝘼𝙒𝘼🌸
+· · ─────── ·♥︎· ─────── · ·
+
+•❥⏤͟͟͞͞Título⏤͟͟͞͞❥: ${apiTitle}
+•❥⏤͟͟͞͞Subido⏤͟͟͞͞❥: ${ago}
+•❥⏤͟͟͞͞Duración⏤͟͟͞͞❥: ${timestamp}
+•❥⏤͟͟͞͞Vistas⏤͟͟͞͞❥: ${(views / 1000).toFixed(1)}k (${views.toLocaleString()})
+➷ *URL⤿:* ${videoUrl}
+
+➤ 𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 𝙨𝙪 𝙫𝙞𝙙𝙚𝙤 𝙚𝙨𝙥𝙚𝙧𝙚 𝙪𝙣 𝙢𝙤𝙢𝙚𝙣𝙩𝙤.. 
+`;
+
+        await conn.sendMessage(m.chat, { image: { url: apiImage }, caption: videoInfo });
+        await m.react('🕓');
+
+        if (fileSizeInMB > 70) {
+            await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: "video/mp4", fileName: apiTitle || `${title}.mp4`, caption: `📂 *Video en Formato Documento:* \n🎵 *Título:* ${apiTitle}\n📦 *Tamaño:* ${fileSizeInMB.toFixed(2)} MB` }, { quoted: m });
+        } else {
+            await conn.sendMessage(m.chat, { video: { url: downloadUrl }, mimetype: "video/mp4", fileName: apiTitle || `${title}.mp4`, caption: `🎥 *Video Descargado:* \n🎵 *Título:* ${apiTitle}\n📦 *Tamaño:* ${fileSizeInMB.toFixed(2)} MB` }, { quoted: m });
+            await m.react('✅');
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        await conn.sendMessage(m.chat, { text: `❌ *Error crítico detectado:*\n${error.message || "Error desconocido."}` });
+        await m.react('✖️');
+    }
+};
+
+handler.command = /^(play2|ytmp4|ytv)$/i;
 
 export default handler;
