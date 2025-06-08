@@ -17,12 +17,12 @@ let textcap = `*YOUTUBE VIDEO DOWNLOADER*
 # Duración: ${lengthSeconds}
 # Calidad: ${quality}
 
-  _*Descripción:*_
+  //_*Descripción:*_
   
-  ${description}
+  //${description}
 
-> ${wm}`
-await conn.sendMessage(
+//> ${wm}`
+//await conn.sendMessage(
         m.chat,
         {
           video: { url: media },
