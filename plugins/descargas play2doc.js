@@ -8,6 +8,10 @@ let handler = async (m, { conn, args, text}) => {
   let ouh = await fetch(`https://fastrestapis.fasturl.cloud/downup/ytdown-v1?name=${text}&format=mp4&quality=720&server=auto`);
   let gyh = await ouh.json();
 
+  if (!gyh.result ||!gyh.result.media) {
+    throw m.reply('No se pudo obtener el video. Intente nuevamente con otro enlace.');
+}
+
   const { duration, thumbnail, views, description, lengthSeconds, uploadDate} = gyh.result.metadata;
   const { author, name, bio, image, subCount} = gyh.result.author;
   const { url, format, quality, media, title} = gyh.result;
@@ -35,7 +39,7 @@ let handler = async (m, { conn, args, text}) => {
     {
       document: { url: media},
       mimetype: 'video/mp4',
-      fileName: `${title}.mp4`,
+      fileName: `${title.replace(/[^a-zA-Z0-9]/g, '_')}.mp4`,
       caption: `📁 *Aquí está tu video en documento*`,
       mentions: [m.sender],
 },
