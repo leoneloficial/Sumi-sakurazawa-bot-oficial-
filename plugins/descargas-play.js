@@ -1,5 +1,7 @@
+import fetch from 'node-fetch';
+
 let handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) return m.reply(`❀ Ingresa un texto para buscar en YouTube.\n> *Ejemplo:* ${usedPrefix + command} Shakira`);
+  if (!text) return m.reply(`✨ Ingresa un texto para buscar en YouTube.\n> *Ejemplo:* ${usedPrefix + command} Shakira`);
 
   try {
     const searchApi = `https://delirius-apiofc.vercel.app/search/ytsearch?q=${text}`;
@@ -11,13 +13,13 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 
     const video = searchData.data[0]; // Tomar el primer resultado
-    const videoDetails = ` *「✦」 ${video.title}*
-
-> ✦ *Canal:* » ${video.author.name}
-> ⴵ *Duración:* » ${video.duration}
-> ✰ *Vistas:* » ${video.views}
-> ✐ *Publicado:* » ${video.publishedAt}
-> 🜸 *Enlace:* » ${video.url}
+    const videoDetails = `
+🎵 *Título:* ${video.title}
+📺 *Canal:* ${video.author.name}
+⏱️ *Duración:* ${video.duration}
+👀 *Vistas:* ${video.views}
+📅 *Publicado:* ${video.publishedAt}
+🌐 *Enlace:* ${video.url}
 `;
 
     await conn.sendMessage(m.chat, {
@@ -45,8 +47,8 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   }
 };
 
-handler.command = ['playaudio', 'playaudio'];
-handler.help = ['play <texto>', 'play<texto>'];
+handler.command = ['play', 'playaudio'];
+handler.help = ['play <texto>', 'playaudio <texto>'];
 handler.tags = ['media'];
 
 export default handler;
