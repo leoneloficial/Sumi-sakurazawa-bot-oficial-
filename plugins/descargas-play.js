@@ -145,7 +145,7 @@ m.react('🌸')
   }
 };
 
-handler.command = handler.help = ['playaudio', 'mp3', 'ytv']; 
+handler.command = handler.help = ['playaudio', 'mp3', 'yta']; 
 handler.tags = ['downloader'];
 
 export default handler;
